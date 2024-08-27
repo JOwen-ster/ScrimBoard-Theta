@@ -164,7 +164,7 @@ class Setup(commands.Cog):
     @commands.guild_only()
     @app_commands.describe(options="Manage your server's ScrimBoard setup")
     @app_commands.choices(options=[
-        discord.app_commands.Choice(name="use-this-channel (global scrims)", value="this"),
+        discord.app_commands.Choice(name="use-this-channel (global scrims)", value="this"), # change "this" to "current"
         discord.app_commands.Choice(name="create-new-channel (global scrims)", value="channel"),
         discord.app_commands.Choice(name="create-new-category (global & in-house scrims)", value="category"),
         discord.app_commands.Choice(name="check-current", value="check"),
@@ -214,6 +214,7 @@ class Setup(commands.Cog):
                     color=thetacolors["default"]
                 )
                 await interaction.edit_original_response(embed=embed)
+
             case 'channel':
                 if currentServerData is not None:
                     await send_already_configured(interaction, self, dbCheck=currentServerData)
